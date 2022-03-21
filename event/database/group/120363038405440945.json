@@ -1,0 +1,13 @@
+{
+  "join": {
+    "msg": "Hello, %user\nWelcome to *%group*\nHave fun with us!",
+    "active": true
+  },
+  "left": {
+    "msg": "Goodbye %user",
+    "active": false
+  },
+  "link": {
+    "active": false
+  }
+}
