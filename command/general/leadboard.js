@@ -64,16 +64,17 @@ const mems_id = new Array()
         } else if (levelRole <= 50) {
             var role = 'Mythic Glory'
         }
-    lbtext += `${i + 1}# ${lb[i].userID}\n*LEVEL* : ${lb[i].level}\n*XP* :${lb[i].xp}\n*ROLR* : ${role}\n\n`;
+    lbtext += `${i + 1}# ${lb[i].userID}\n*LEVEL* : ${lb[i].level}\n*XP* : ${lb[i].xp}\n*ROLR* : ${role}\n\n`;
 	mems_id.push(lb[i].userID)
 }
 try {
-	  //msg.reply(`${lbtext}`)
+	  msg.reply(`${lbtext}`)
+	  console.log(lbtext)
 //mentions(lbtext, mems_id, true)
 	  //await sock.sendMessage(from, { lbtext, mentions: mems_id, true }, { quoted: msg })
 	  await sock.sendMessage(from, { image: { url: "https://c4.wallpaperflare.com/wallpaper/825/394/522/anime-girl-laptop-wallpaper-preview.jpg" }, caption: `${lbtext}`}, { quoted: msg })
 } catch(err){ 
-msg.reply(`${err}\n ${mems_id}`)
+msg.reply(`${err}`)
 msg.reply(mems_id)
 }
 	  //console.log(lb)
