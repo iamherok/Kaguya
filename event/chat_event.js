@@ -4,6 +4,7 @@ const { checkData } = require("./database/group_setting")
 const djs = require("@discordjs/collection")
 const { color } = require("../utils")
 const Levels = require('discord-xp')
+const axios = require("axios")
 const { QuickDB } = require("quick.db");
 const db = QuickDB(); 
 Levels.setURL("mongodb+srv://das77:das@cluster0.itbgi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
