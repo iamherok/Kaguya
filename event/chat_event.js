@@ -3,10 +3,14 @@ const { serialize } = require("../lib/helper")
 const { checkData } = require("./database/group_setting")
 const djs = require("@discordjs/collection")
 const { color } = require("../utils")
+const { fetchJson } = require("../utils");
 const Levels = require('discord-xp')
 const axios = require("axios")
 const { QuickDB } = require("quick.db");
 const db = QuickDB(); 
+const sid = new db.table('sid')
+const pro = new db.table('pro')
+const chara = new db.table('chara')
 Levels.setURL("mongodb+srv://das77:das@cluster0.itbgi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 console.log("Connected to database")
 
@@ -118,6 +122,16 @@ module.exports = chatHandler = async (m, sock) => {
             body = body.startsWith(temp_pref) ? body : ""
         }
         else { body = '' }
+///chara
+setInterval(async () => {
+  const myArray = db.all()
+  const arr = randomItem = myArray[Math.floor(Math.random()*myArray.length)];
+  const data = await fetchJson("https://reina-api.vercel.app/api/mwl/random")
+  await sock.sendMessage(arr, { image: { url: data.display_picture  }, caption: "A character has spawn to add it in your heram use !catch <name>" });
+  chara.set(arr, data.name)
+  sid.set(arr, data.id)
+}, 1000);
+///chara
 
         const arg = body.substring(body.indexOf(' ') + 1);
         const args = body.trim().split(/ +/).slice(1);
