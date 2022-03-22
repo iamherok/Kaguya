@@ -71,7 +71,10 @@ module.exports = {
                 pfp = await sock.profilePictureUrl(sender, "image");
             } catch { pfp = 'https://www.linkpicture.com/q/IMG-20220118-WA0387.png' }
 let text = "";
-text += `🔰 *Name* : ${pushName === undefined ? sender.split("@")[0] : pushName}\n\n💡 *Number* : ${sender}\n\n🗯 *Group* : ${meta?.subject}\n\n📑 *Bio*: ${bio.status}\n\n`
+text += `🔰 *Name* : ${pushName === undefined ? sender.split("@")[0] : pushName}\n\n💡 *Number* : ${sender}\n\n🗯 *Group* : ${meta?.subject}\n\n`
+if (bio.status){
+text += `📑 *Bio*: ${bio.status}\n\n`
+}
 if (owner.includes(sender))
 text += `🛎 *Owner* : True\n\n`
 if (!user){
