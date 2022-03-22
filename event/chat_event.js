@@ -217,7 +217,7 @@ module.exports = chatHandler = async (m, sock) => {
         setTimeout(() => timestamps.delete(from), cdAmount);
 
         try {
-            cmd.exec(msg, sock, args, arg);
+            cmd.exec(msg, sock, args, db, arg);
         } catch (e) {
             console.error(e);
         }
